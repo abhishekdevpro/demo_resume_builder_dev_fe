@@ -73,6 +73,7 @@ const Navbar = () => {
           </div>
           <div className="hidden md:flex justify-center items-center space-x-4">
             <Link href="/dashboard/aibuilder" className="text-white px-3 py-2 rounded-md text-lg font-semibold">AI Resume Builder</Link>
+            
             <Link href="/dashboard/resumelist" className="text-white px-3 py-2 rounded-md text-lg font-semibold">My Resumes</Link>
             <Link href="" className="text-white px-3 py-2 rounded-md text-lg font-semibold">About Us</Link>
             {/* <Link href="/adminlogin" className="text-white px-3 py-2 rounded-md text-lg font-semibold">

@@ -226,19 +226,31 @@ const LoadUnload = () => {
   }, [router.query.id]);
 
 
+  // useEffect(() => {
+  //   // Extract the token directly from the URL
+  //   const url = window.location.href;
+  //   const tokenFromUrl = url.split("/?")[1]; // Gets the token part after `/?`
+
+  //   if (tokenFromUrl) {
+  //     // Save token to localStorage and state
+  //     localStorage.setItem("token", tokenFromUrl);
+  //     setToken(tokenFromUrl);
+  //   } else if (typeof window !== "undefined") {
+  //     // Retrieve token from localStorage if not found in URL
+  //     const storedToken = localStorage.getItem("token");
+  //     setToken(storedToken);
+  //   }
+  // }, []);
+
   useEffect(() => {
-    // Extract the token directly from the URL
-    const url = window.location.href;
-    const tokenFromUrl = url.split("/?")[1]; // Gets the token part after `/?`
+    // Extract the token directly from the URL using URLSearchParams
+    const urlParams = new URLSearchParams(window.location.search);
+    const tokenFromUrl = urlParams.get('token'); // Safely extract 'token' from query params
 
     if (tokenFromUrl) {
       // Save token to localStorage and state
       localStorage.setItem("token", tokenFromUrl);
       setToken(tokenFromUrl);
-    } else if (typeof window !== "undefined") {
-      // Retrieve token from localStorage if not found in URL
-      const storedToken = localStorage.getItem("token");
-      setToken(storedToken);
     }
   }, []);
 
@@ -361,7 +373,7 @@ console.log(token)
           <div className="bg-white   rounded-lg shadow-lg h-screen w-screen text-center relative">
            
 
-<nav class="border-b-2 bg-gray-300 bg">
+{/* <nav class="border-b-2 bg-gray-300 bg">
   <div class="max-w-screen flex flex-wrap items-center justify-between mx-auto p-4"
   style={{backgroundColor:"#4C3957"}}
   >
@@ -375,7 +387,7 @@ console.log(token)
    
     </div>
   </div>
-</nav>
+</nav> */}
 
             
             <h1 className="text-xl md:text-2xl font-bold mb-4 mt-8 md:mt-16">Are you uploading an existing resume?</h1>
@@ -428,7 +440,8 @@ console.log(token)
             </div>
           </div>
         </div>
-      )}
+      )
+     } 
     </>
   );
 };

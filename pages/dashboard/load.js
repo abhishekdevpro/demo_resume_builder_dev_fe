@@ -11,7 +11,8 @@ import { FaBars } from 'react-icons/fa'; //
 import Builder from "../builder";
 import LoadUnload from "../../components/form/LoadUnload";
 
-export default function DashboardPage() {
+// export default function DashboardPage() {
+export default function Load() {
 
    
     return (

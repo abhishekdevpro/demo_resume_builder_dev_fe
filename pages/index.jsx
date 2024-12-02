@@ -5,14 +5,16 @@ import Home_first from "./Home/Home_first";
 import FAQ from "./Home/FAQ/FAQ_Component.jsx";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
+import LoadUnload from "../components/form/LoadUnload.jsx";
 
 const ResumeBuilder = () => {
   return (
     <>
-    <Builder />
-    {/* <Navbar/>
+    {/* <Builder /> */}
+    {/* <LoadUnload /> */}
+    <Navbar/>
     <Home_first/>
-    <FAQ/> */}
+    <FAQ/>
     {/* <Loder/>  */}
     {/* <Footer/> */}
     </>
@@ -20,4 +22,8 @@ const ResumeBuilder = () => {
 };
 
 export default ResumeBuilder;
+
+
+
+
 
