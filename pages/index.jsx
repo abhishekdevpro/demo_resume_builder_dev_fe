@@ -10,11 +10,11 @@ import LoadUnload from "../components/form/LoadUnload.jsx";
 const ResumeBuilder = () => {
   return (
     <>
-    {/* <Builder /> */}
+    <Builder />
     {/* <LoadUnload /> */}
-    <Navbar/>
+    {/* <Navbar/>
     <Home_first/>
-    <FAQ/>
+    <FAQ/> */}
     {/* <Loder/>  */}
     {/* <Footer/> */}
     </>

@@ -200,7 +200,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { ResumeContext } from "../../pages/builder";
 import { toast } from "react-toastify";
-
+import logo from "../../pages/Navbar/logoss.jpg"
 const LoadUnload = () => {
   const { setResumeData } = useContext(ResumeContext);
   const [file, setFile] = useState(null);
@@ -373,21 +373,21 @@ console.log(token)
           <div className="bg-white   rounded-lg shadow-lg h-screen w-screen text-center relative">
            
 
-{/* <nav class="border-b-2 bg-gray-300 bg">
-  <div class="max-w-screen flex flex-wrap items-center justify-between mx-auto p-4"
+<nav class="border-b-2 bg-gray-300 bg">
+  {/* <div class="max-w-screen flex flex-wrap items-center justify-between mx-auto p-4"
   style={{backgroundColor:"#4C3957"}}
   >
     <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse" 
      >
-        <img src="https://abroadiumlandingemployee.vercel.app/assets/logo-c5bcd0df.png" class="h-8" alt="Flowbite Logo" />
+        <img src={logo} class="h-8" alt="Flowbite Logo" />
         
     </a>
    
     <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
    
     </div>
-  </div>
-</nav> */}
+  </div> */}
+</nav>
 
             
             <h1 className="text-xl md:text-2xl font-bold mb-4 mt-8 md:mt-16">Are you uploading an existing resume?</h1>
