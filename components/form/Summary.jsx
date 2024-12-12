@@ -72,12 +72,14 @@ const Summary = () => {
       setShowPopup(false); // Close the popup
     }
   };
-
+  
   // Handle Quill editor content change
   const handleQuillChange = (content) => {
+    
     setResumeData({
       ...resumeData,
       summary: content,
+
     });
   };
 
@@ -135,11 +137,15 @@ const Summary = () => {
           placeholder="Enter your professional summary or use AI Assist to generate one"
           value={resumeData.summary || ""}
           onChange={handleQuillChange}
+         
           className="w-full other-input h-auto border-black border rounded"
           theme="snow"
           modules={{
             toolbar: [["bold", "italic", "underline"], ["clean"]],
+            
+           
           }}
+          
         />
         <div className="text-sm text-gray-500 mt-1 text-right">
           {resumeData.summary?.length || 0}/500
