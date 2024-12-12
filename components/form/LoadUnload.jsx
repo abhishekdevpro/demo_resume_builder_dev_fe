@@ -297,7 +297,10 @@ console.log(token)
           toast.info(`Upload progress: ${percentCompleted}%`);
         },
       });
-
+      const {file_path}=response.data.data[0];
+      if(file_path){
+        console.log("Here is Extracted filePath "+file_path);
+      }
       const resumeData = response.data.data[0];
       if (!resumeData || !resumeData.resume_parse_data) {
         toast.error("Resume data not found in API response");
@@ -311,6 +314,10 @@ console.log(token)
       localStorage.setItem("resumeData", JSON.stringify(parsedData.templateData));
       localStorage.setItem("resumeId", resumeData.id);
       localStorage.setItem("location", resumeData.file_path);
+      if(resumeData.file_path) {
+        console.log("File Location in LoadUnload file is: "+resumeData.file_path);
+      }
+      
 
       toast.success("File uploaded successfully");
       setIsUploaded(true);
@@ -335,6 +342,9 @@ console.log(token)
   
       if (response.data && response.data.data) {
         const { id, file_path, ai_resume_parse_data } = response.data.data;
+        if(file_path) {
+          console.log("File Location in LoadUnload file is: "+file_path);
+        }
         
         const parsedData = JSON.parse(ai_resume_parse_data).templateData;
   
@@ -342,6 +352,7 @@ console.log(token)
         localStorage.setItem("resumeData", JSON.stringify(parsedData));
         localStorage.setItem("resumeId", id);
         localStorage.setItem("location", file_path);
+       
   
         router.push(`/dashboard/aibuilder/${id}`);
         setShowLoadingAnimation(false);

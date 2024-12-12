@@ -80,6 +80,11 @@ const Template1 = () => {
         </button>
       );
 
+      const formatText = (command, value = null) => {
+        document.execCommand(command, false, value);
+      };
+      
+
       const toggleBold = () => formatText('bold');
   const toggleItalic = () => formatText('italic');
   const toggleUnderline = () => formatText('underline');

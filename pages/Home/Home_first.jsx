@@ -9,6 +9,7 @@ import Image from "next/image";
 import Home_second from "./Home_second";
 import { useEffect, useState } from "react";
 
+
 function Home_first() {
         const [isAuthenticated, setIsAuthenticated] = useState(false);
     
@@ -32,7 +33,7 @@ function Home_first() {
         image2,
         image3
     ];
-
+    
 
     return (
         <>
@@ -84,6 +85,7 @@ function Home_first() {
             </div>
 
 <Home_second/>
+
         </>
     );
 }

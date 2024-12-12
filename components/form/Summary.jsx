@@ -6,8 +6,10 @@ const Summary = () => {
   const { resumeData, setResumeData, handleChange } = useContext(ResumeContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  const handleAIAssist = async () => {
+  if(resumeData.position){
+    console.log("ResumeData Position: "+resumeData.position)
+  }
+   const handleAIAssist = async () => {
     setLoading(true);
     setError(null);
     
@@ -15,13 +17,14 @@ const Summary = () => {
       const token = localStorage.getItem("token");
       const location = localStorage.getItem("location");
       
+      
       const response = await axios.post(
         'https://api.resumeintellect.com/api/user/ai-resume-summery-data',
         {
           key: "resumesummery",
           keyword: "professional summery in manner of description",
           content: resumeData.position,
-          file_location: location
+          file_location: location,
         },
         {
           headers: {
@@ -29,6 +32,9 @@ const Summary = () => {
           }
         }
       );
+      if(location){
+        console.log("Location: "+location)
+      }
 
       // Check if the response is successful and contains the expected data
       if (response.data.status === "success" && 
