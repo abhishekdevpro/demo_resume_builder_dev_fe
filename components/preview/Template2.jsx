@@ -59,7 +59,7 @@ const Template1 = () => {
   return (
     <div className="max-w-4xl mx-auto bg-white p-8 border border-gray-200 rounded-lg shadow-lg">
     <A4PageWrapper>
-      <HighlightMenu
+      {/* <HighlightMenu
         styles={{
           borderColor: "#C026D3",
           backgroundColor: "#C026D3",
@@ -119,7 +119,7 @@ const Template1 = () => {
         />
           </>
         )}
-      />
+      /> */}
 
       <div className="f-col  mb-1">
         {resumeData.profilePicture.length > 0 && (

@@ -102,7 +102,7 @@ const Template1 = () => {
       {/* <h1 style={{ color: headerColor }}>Template 1</h1>*/}  
         <div className="">
           <A4PageWrapper >
-            <HighlightMenu
+            {/* <HighlightMenu
               styles={{
                 borderColor: "#C026D3",
                 backgroundColor: "#C026D3",
@@ -162,7 +162,7 @@ const Template1 = () => {
               />
                 </>
               )}
-            />
+            /> */}
 
             <div className="f-col items-center mb-1" >
             {resumeData?.profilePicture && resumeData.profilePicture.length > 0 && (

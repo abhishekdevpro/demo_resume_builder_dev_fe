@@ -555,7 +555,7 @@ const Preview = ({ selectedTemplate }) => {
     <div>
       <A4PageWrapper>
       <div style={{ fontFamily: selectedFont }}>
-      <HighlightMenu
+      {/* <HighlightMenu
           styles={{
             borderColor: "",
             backgroundColor: "#c5c9c9",
@@ -612,7 +612,7 @@ const Preview = ({ selectedTemplate }) => {
                 icon={<FaLink />}
                 onClick={toggleLink}
               />
-              {/* Grammar Check Button */}
+              
               <MenuButton
                 title="Check Grammar"
                 icon={<FaSpellCheck />}
@@ -620,7 +620,7 @@ const Preview = ({ selectedTemplate }) => {
               />
             </>
           )}
-        />
+        /> */}
         <DragDropContext onDragEnd={onDragEnd}>
           {templates[selectedTemplate]}
         </DragDropContext>
