@@ -423,10 +423,17 @@ export default function Builder({ onClose }) {
               </button>
             </div>
             
-            <div className="overflow-y-auto md:h-screen mx-auto">
+            <div className="overflow-y-auto md:h-screen mx-auto"
+              
+            >
               <PDFExport ref={pdfExportComponent} {...pdfExportOptions}>
                 <div id="preview-section" className="bg-white">
-                  <Preview selectedTemplate={selectedTemplate} />
+                  <Preview selectedTemplate={selectedTemplate} 
+                  // style={{
+                  //   height: window.innerWidth < 768 ? '80vh' : '100vh',
+                  //   width: window.innerWidth < 768 ? '70%' : '80%',
+                  // }}
+                  />
                 </div>
               </PDFExport>
             </div>

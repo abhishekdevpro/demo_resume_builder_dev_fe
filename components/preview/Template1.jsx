@@ -1,7 +1,7 @@
 // import React from "react";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import { ResumeContext } from "../../pages/builder";
-import { HighlightMenu } from "react-highlight-menu";
+// import { HighlightMenu } from "react-highlight-menu";
 import ContactInfo from "./ContactInfo";
 import { CgWebsite } from "react-icons/cg";
 import DateRange from "../utility/DateRange";
@@ -22,6 +22,9 @@ import {
   } from "react-icons/fa";
   import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
   import dynamic from "next/dynamic";
+import 'react-quill/dist/quill.snow.css';
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+
   // Importing draggable components dynamically
 const DragDropContext = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.DragDropContext), { ssr: false });
 const Droppable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Droppable), { ssr: false });
@@ -61,6 +64,13 @@ const checkGrammar = () => {
 
 const Template1 = () => {
     const { resumeData, setResumeData,headerColor,backgroundColorss } = useContext(ResumeContext);
+    // const [showToolbar, setShowToolbar] = useState(false);
+    // const stripHtml = (html) => {
+    //   return html
+      
+    //   .replace(/<\/?p>/g, "")                        // Remove <p> tags
+      
+    // };
     const icons = [
         { name: "github", icon: <FaGithub /> },
         { name: "linkedin", icon: <FaLinkedin /> },
@@ -96,6 +106,25 @@ const Template1 = () => {
       formatText('createLink', url);
     }
   };
+
+  const handleSummaryChange = (value) => {
+    setResumeData((prevData) => ({
+      ...prevData,
+      summary: value, // Updated summary content
+    }));
+  };
+  const [showToolbar, setShowToolbar] = useState(false);
+
+  const handleSelectionChange = (range) => {
+    // if (range && range.length > 0) {
+    //   setShowToolbar(true);  // Show toolbar when text is selected
+    // } else {
+    //   setShowToolbar(false); // Hide toolbar when no text is selected
+    // }
+    // console.log("clicked on summary")
+  };
+  
+  
   return (
     <div className="">
      <div className="max-w-4xl mx-auto bg-white p-8 border border-gray-200 rounded-lg shadow-lg">
@@ -232,8 +261,38 @@ const Template1 = () => {
                       Summary
                     </h2>
                     {/* <p className="content break-words">{resumeData.summary}</p> */}
-                    {resumeData.summary}
-                  </div>
+                    {/* {resumeData.summary} */}
+                    <div
+                >
+                  <ReactQuill
+                    theme="snow"
+                    value={resumeData.summary}
+                    onChange={handleSummaryChange}
+                    className="content break-words"
+                    modules={{
+                      toolbar: showToolbar
+                        ? [
+                            ['bold', 'italic', 'underline'],
+                            [{ list: 'ordered' }, { list: 'bullet' }],
+                            ['link'],
+                          ]
+                        : false,  // If no selection, toolbar will be hidden
+                    }}
+                    onChangeSelection={handleSelectionChange} // Track text selection
+                  />
+                  {/* <ReactQuill
+                    
+                    value={resumeData.summary}
+                    // value={stripHtml(resumeData.summary)}
+                    onChange={handleSummaryChange}
+                    className="content break-words"
+                    
+                    
+                  /> */}
+
+                </div>
+              </div>
+                
                 )}
                 <div>
                   { resumeData?.education &&resumeData.education.length > 0 && (

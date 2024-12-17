@@ -5,6 +5,14 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css"; // Import Quill CSS for styling
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+const quillModules = {
+  toolbar: [
+    [{ header: [1, 2, false] }],
+    ["bold", "italic", "underline"],
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ align: [] }],
+  ],
+};
 
 const Summary = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
@@ -133,8 +141,8 @@ const Summary = () => {
 
       {/* ReactQuill Editor */}
       <div className="grid-1 w-full max-w-sm">
-        <ReactQuill
-          placeholder="Enter your professional summary or use AI Assist to generate one"
+        {/* <ReactQuill
+          placeholder="Enter your professional summary or use AI Assist"
           value={resumeData.summary || ""}
           onChange={handleQuillChange}
          
@@ -146,6 +154,15 @@ const Summary = () => {
            
           }}
           
+        /> */}
+         <ReactQuill
+          placeholder="Summary"
+          name="summary"
+          className="w-full other-input border-black border h-50"
+          value={resumeData.summary}
+          onChange={handleQuillChange} // Pass the content directly
+          // maxLength="500"
+          modules={quillModules}
         />
         <div className="text-sm text-gray-500 mt-1 text-right">
           {resumeData.summary?.length || 0}/500

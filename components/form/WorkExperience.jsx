@@ -217,7 +217,8 @@ const WorkExperience = () => {
   const handleAIAssist = async (index) => {
     setIsLoading(true);
     try {
-      const response = await axios.post('https://api.resumeintellect.com/api/user/ai-resume-profexp-data', {
+      // const response = await axios.post('https://api.resumeintellect.com/api/user/ai-resume-profexp-data', {
+      const response = await axios.post('https://api.sentryspot.co.uk/api/jobseeker/ai-resume-profexp-data', {
         key: "professional_experience",
         keyword: "Genrate professional summary and Checklist of professional experience in manner of content and information",
         content: resumeData.workExperience[index].position,
@@ -226,9 +227,10 @@ const WorkExperience = () => {
           Authorization:token
         }
       });
+      const slicedResponsibilities = response.data.data.resume_analysis.responsibilities.slice(0, 5);
       
       handleDescriptionChange(response.data.data.resume_analysis.professional_summary, index);
-      handleResponsibilitiesChange(response.data.data.resume_analysis.responsibilities, index);
+      handleResponsibilitiesChange(slicedResponsibilities, index);
 
     } catch (err) {
       setError(err.message);
